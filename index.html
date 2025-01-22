@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Pasta Place - the home of authentic Italian cuisine with a modern twist!">
+    <meta name="keywords" content="Pasta Place, Italian restaurant, Italian food, fine dining">
+    <meta name="author" content="Pasta Place">
+    <title>Pasta Place</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e1e, #000000);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: #ffff00; /* Yellow titles */
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header and Navbar */
+        header {
+            background: linear-gradient(135deg, #1e90ff, #00008b);
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffff00; /* Yellow logo */
+            text-decoration: none;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .navbar .nav-links a {
+            color: #ffff00; /* Yellow links */
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: color 0.3s, transform 0.3s;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .nav-links a:hover {
+            color: #ff4500;
+            transform: translateY(-3px);
+        }
+
+        .navbar .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .navbar .hamburger .line {
+            width: 25px;
+            height: 3px;
+            background-color: #ffff00; /* Yellow lines */
+            margin: 4px 0;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Sections */
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content h2 {
+            color: #ffff00; /* Yellow titles */
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background: linear-gradient(135deg, #1e1e1e, #333333);
+            border: 1px solid #444444;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, #00008b, #1e90ff);
+            color: #ffff00;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-item p {
+            padding: 1rem;
+            margin: 0;
+            color: #cccccc;
+        }
+
+        /* Reservation Section */
+        .reservation {
+            background: linear-gradient(135deg, #1e90ff, #00008b);
+            padding: 3rem;
+            color: #ffffff;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .reservation h2 {
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .reservation button {
+            background: linear-gradient(135deg, #00008b, #1e90ff);
+            color: #ffff00;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .reservation button:hover {
+            background: linear-gradient(135deg, #ff4500, #ff6347);
+            transform: translateY(-3px);
+        }
+
+        /* Map Section */
+        .map {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .map iframe {
+            border: none;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, #00008b, #1e90ff);
+            color: #ffffff;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 1rem;
+            text-align: center;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffff00; /* Yellow titles */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .footer-section p {
+            margin: 0.5rem 0;
+            color: #cccccc;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin: 0.5rem 0;
+        }
+
+        .footer-section ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #ff4500;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff4500;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444444;
+        }
+
+        .footer-bottom p {
+            margin: 0.5rem 0;
+            color: #cccccc;
+        }
+
+        .footer-bottom a {
+            color: #ffff00; /* Yellow links */
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: #ff4500;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff4500;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffff00; /* Yellow background */
+            color: #1e1e1e; /* Dark text color */
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+        }
+
+        .back-to-top:hover {
+            background-color: #ff4500; /* Orange on hover */
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: linear-gradient(135deg, #1e90ff, #00008b);
+                padding: 1rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .hamburger {
+                display: flex;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-section {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer-logo img {
+                height: 80px;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer-links a {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Pasta Place Logo">
+                Pasta Place
+            </a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#menu">Menu</a>
+                <a href="index.html#reservation">Reservation</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <div class="hero">
+        <video autoplay muted loop id="heroVideo">
+            <source src="videos/hero-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div>
+            <h1>Fresh, Flavorful, and Fabulous Pasta</h1>
+            <p>Experience the Taste of Italy Right Here</p>
+        </div>
+    </div>
+
+    <div class="content" id="about">
+        <h2>About Us</h2>
+        <p>At Pasta Place, we bring authentic Italian flavors to your plate. Our family-owned restaurant has been delighting customers for over a decade. From traditional recipes to modern twists, our chefs ensure every bite is a masterpiece. We take pride in sourcing the freshest ingredients, including locally-grown produce and high-quality Italian imports, to create an unforgettable dining experience for everyone.</p>
+    </div>
+
+    <div class="content" id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu">
+            <div class="menu-item">
+                <img src="images/Spaghetti Bolognese.jpg" alt="Spaghetti Bolognese">
+                <h3>Spaghetti Bolognese</h3>
+                <p>Rich and hearty tomato-based meat sauce served over al dente spaghetti.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Fettuccine Alfredo.jpg" alt="Fettuccine Alfredo">
+                <h3>Fettuccine Alfredo</h3>
+                <p>Creamy Alfredo sauce paired with perfectly cooked fettuccine.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Penne Arrabbiata.jpg" alt="Penne Arrabbiata">
+                <h3>Penne Arrabbiata</h3>
+                <p>Spicy tomato sauce with a kick, served over penne pasta.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Lasagna.jpg" alt="Lasagna">
+                <h3>Lasagna</h3>
+                <p>Layers of pasta, ricotta, mozzarella, and savory meat sauce baked to perfection.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Caprese Salad.jpg" alt="Caprese Salad">
+                <h3>Caprese Salad</h3>
+                <p>Fresh mozzarella, ripe tomatoes, and basil drizzled with balsamic glaze.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Tiramisu.jpg" alt="Tiramisu">
+                <h3>Tiramisu</h3>
+                <p>Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Margherita Pizza.jpg" alt="Margherita Pizza">
+                <h3>Margherita Pizza</h3>
+                <p>Wood-fired pizza topped with fresh mozzarella, basil, and tomato sauce.</p>
+            </div>
+            <div class="menu-item">
+                <img src="images/Garlic Bread.jpg" alt="Garlic Bread">
+                <h3>Garlic Bread</h3>
+                <p>Freshly baked bread topped with garlic butter and herbs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="reservation" id="reservation">
+        <h2>Make a Reservation</h2>
+        <p>Reserve your table today and enjoy an unforgettable dining experience! Call us at (555) 123-4567 or click the button below.</p>
+        <button>Book Now</button>
+    </div>
+
+    <div class="content" id="contact">
+        <h2>Contact Us</h2>
+        <p><strong>Location:</strong> 123 Main Street, Foodie Town</p>
+        <p><strong>Phone:</strong> (555) 123-4567</p>
+        <p><strong>Email:</strong> info@pastaplace.com</p>
+        <p>Open daily: 11:00 AM - 10:00 PM</p>
+    </div>
+
+    <div class="map">
+        <h2>Find Us</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093645!2d-122.4200482846812!3d37.77928027975852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808cbd1f1eb5%3A0x7f8f870bcbd9e1d4!2s123%20Main%20St%2C%20San%20Francisco%2C%20CA%2094105%2C%20USA!5e0!3m2!1sen!2sus!4v1618242275155!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Pasta Place Logo">
+                <h3>Pasta Place</h3>
+            </div>
+            <div class="footer-section">
+                <h3>Site Map</h3>
+                <ul>
+                    <li><a href="index.html#about">About Us</a></li>
+                    <li><a href="index.html#menu">Our Menu</a></li>
+                    <li><a href="index.html#reservation">Reservation</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><strong>Address:</strong> 123 Main Street, Foodie Town</p>
+                <p><strong>Phone:</strong> (555) 123-4567</p>
+                <p><strong>Email:</strong> info@pastaplace.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pasta Place. All rights reserved.</p>
+            <p>Designed by <a href="https://alectronic-solutions.github.io/home" target="_blank">Alectronic Solutions</a></p>
+            <div class="footer-links">
+                <a href="terms.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
+        ↑
+    </button>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Back to Top Button Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll
+            });
+        }
+
+        // Show/hide the button based on scroll position
+        window.onscroll = function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>
