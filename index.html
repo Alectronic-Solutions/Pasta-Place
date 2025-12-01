@@ -3,607 +3,1414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to Pasta Place - the home of authentic Italian cuisine with a modern twist!">
-    <meta name="keywords" content="Pasta Place, Italian restaurant, Italian food, fine dining">
-    <meta name="author" content="Pasta Place">
-    <title>Pasta Place</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Pasta Place - Authentic Italian cuisine served in an elegant, modern atmosphere. Fresh pasta, fine wines, and unforgettable experiences.">
+    <meta property="og:title" content="Pasta Place | Authentic Italian Dining">
+    <meta property="og:description" content="Experience the taste of Italy. Book your table today.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="portfolio-11.jpg" type="image/jpeg">
+    
+    <title>Pasta Place | Authentic Italian</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* =========================================
+           CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            /* --- Light Mode (Default) --- */
+            --primary-gold: #Bfa35f; 
+            --primary-gold-hover: #9e8445;
+            --accent-color: #0a0a0a;
+            
+            --bg-body: #ffffff;
+            --bg-surface: #f8f8f8;
+            --bg-surface-alt: #f0f0f0;
+            --bg-overlay: rgba(255, 255, 255, 0.95);
+            
+            --text-main: #121212;
+            --text-secondary: #444444; 
+            --text-light: #ffffff;
+            
+            --border-color: rgba(0, 0, 0, 0.08);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            
+            /* Typography */
+            --font-head: 'Playfair Display', serif;
+            --font-subhead: 'Poppins', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+            
+            /* Spacing - Optimized */
+            --container-padding: 2rem;
+            --max-width: 1200px;
+            --nav-height: 70px; /* Reduced from 90px */
+            --section-padding: 6rem 0; /* Standard desktop padding */
+        }
+
+        /* --- Dark Mode Overrides --- */
+        body.dark-mode {
+            --primary-gold: #D4AF37;
+            --primary-gold-hover: #b5952f;
+            --accent-color: #ffffff;
+            
+            --bg-body: #121212;
+            --bg-surface: #1e1e1e;
+            --bg-surface-alt: #2a2a2a;
+            --bg-overlay: rgba(10, 10, 10, 0.95);
+            
+            --text-main: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --text-light: #f5f5f5;
+            
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e1e1e, #000000);
-            color: #ffffff;
-            line-height: 1.6;
+            box-sizing: border-box;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            color: #ffff00; /* Yellow titles */
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
-        p {
-            font-family: 'Poppins', sans-serif;
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        /* Header and Navbar */
-        header {
-            background: linear-gradient(135deg, #1e90ff, #00008b);
-            padding: 1rem 0;
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-head);
+            color: var(--primary-gold);
+            line-height: 1.3;
+        }
+        
+        body:not(.dark-mode) h1, 
+        body:not(.dark-mode) h2 {
+            color: #0a0a0a; 
+        }
+        
+        body:not(.dark-mode) h1 span,
+        body:not(.dark-mode) .section-title {
+            color: var(--primary-gold);
+        }
+
+        h1 { font-weight: 600; }
+        h2 { font-weight: 500; }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* =========================================
+           UTILITY CLASSES
+           ========================================= */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem; /* Slightly smaller padding */
+            border: 1px solid var(--primary-gold);
+            background-color: var(--primary-gold);
+            color: #0a0a0a; 
+            font-family: var(--font-subhead);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            cursor: pointer;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: transparent;
+            color: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+        
+        body:not(.dark-mode) .btn:hover {
+            color: #0a0a0a;
+            background-color: transparent;
+            border-color: #0a0a0a;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+        }
+
+        .btn-outline:hover, .btn-outline:focus {
+            background-color: var(--primary-gold);
+            color: #0a0a0a;
+        }
+
+        body:not(.dark-mode) .btn-outline {
+            color: #0a0a0a;
+            border-color: #0a0a0a;
+        }
+        
+        body:not(.dark-mode) .btn-outline:hover {
+            background-color: #0a0a0a;
+            color: var(--primary-gold);
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            font-style: italic;
+            color: var(--primary-gold);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3.5rem;
+            font-family: var(--font-subhead);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           HEADER & NAVIGATION (Compact)
+           ========================================= */
+        header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-overlay);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            height: var(--nav-height);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
-        .navbar {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
-        }
-
-        .navbar .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #ffff00; /* Yellow logo */
-            text-decoration: none;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .navbar .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        .navbar .nav-links {
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        .navbar .nav-links a {
-            color: #ffff00; /* Yellow links */
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .navbar .nav-links a:hover {
-            color: #ff4500;
-            transform: translateY(-3px);
-        }
-
-        .navbar .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .navbar .hamburger .line {
-            width: 25px;
-            height: 3px;
-            background-color: #ffff00; /* Yellow lines */
-            margin: 4px 0;
-            transition: all 0.3s;
-        }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 600px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #ffffff;
-        }
-
-        .hero video {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
+            text-decoration: none;
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            margin: 0;
-            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.7);
+        .logo-img {
+            height: 45px; /* Reduced logo size */
+            width: auto;
+            display: block;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Content Sections */
-        .content {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .content h2 {
-            color: #ffff00; /* Yellow titles */
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .menu {
+        .logo-fallback {
+            font-family: var(--font-head);
+            font-size: 1.5rem; /* Smaller text */
+            font-weight: 700;
+            color: var(--primary-gold);
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
         }
 
-        .menu-item {
-            background: linear-gradient(135deg, #1e1e1e, #333333);
-            border: 1px solid #444444;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+        body:not(.dark-mode) .logo-fallback {
+            color: #0a0a0a;
+        }
+        
+        body:not(.dark-mode) .logo-fallback i {
+            color: var(--primary-gold);
         }
 
-        .menu-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        .nav-links {
+            display: flex;
+            gap: 2rem; /* Tighter spacing */
+            align-items: center;
         }
 
-        .menu-item img {
+        .nav-links a {
+            font-family: var(--font-subhead);
+            font-weight: 500;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            color: var(--text-main);
+        }
+
+        .nav-links a:not(.btn)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn):hover::after {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
         }
 
-        .menu-item h3 {
-            margin: 0;
-            padding: 1rem;
-            background: linear-gradient(135deg, #00008b, #1e90ff);
-            color: #ffff00;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .menu-item p {
-            padding: 1rem;
-            margin: 0;
-            color: #cccccc;
-        }
-
-        /* Reservation Section */
-        .reservation {
-            background: linear-gradient(135deg, #1e90ff, #00008b);
-            padding: 3rem;
-            color: #ffffff;
-            text-align: center;
-            margin: 2rem 0;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .reservation h2 {
-            margin-bottom: 1rem;
-            font-size: 2.5rem;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .reservation button {
-            background: linear-gradient(135deg, #00008b, #1e90ff);
-            color: #ffff00;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
+        .hamburger {
+            display: none;
+            font-size: 1.6rem;
+            color: var(--text-main);
             cursor: pointer;
-            border-radius: 0.5rem;
-            transition: background 0.3s, transform 0.3s;
+            padding: 5px;
         }
 
-        .reservation button:hover {
-            background: linear-gradient(135deg, #ff4500, #ff6347);
-            transform: translateY(-3px);
-        }
-
-        /* Map Section */
-        .map {
-            margin: 2rem auto;
-            text-align: center;
-        }
-
-        .map iframe {
-            border: none;
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer Styles */
-        footer {
-            background: linear-gradient(135deg, #00008b, #1e90ff);
-            color: #ffffff;
-            padding: 2rem 0;
-            margin-top: 2rem;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer-content {
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            height: 100vh;
+            min-height: 600px; /* Prevent it being too squashed on landscape mobile */
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            max-width: 1200px;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+                        url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
             margin: 0 auto;
             padding: 0 1rem;
         }
 
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-            margin: 1rem;
-            text-align: center;
-        }
-
-        .footer-section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #ffff00; /* Yellow titles */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .footer-section p {
-            margin: 0.5rem 0;
-            color: #cccccc;
-        }
-
-        .footer-section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-section ul li {
-            margin: 0.5rem 0;
-        }
-
-        .footer-section ul li a {
+        body .hero h1,
+        body:not(.dark-mode) .hero h1 {
+            font-size: 4.5rem; /* Slightly smaller for better fit */
+            margin-bottom: 1.5rem;
             color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            line-height: 1.1;
         }
 
-        .footer-section ul li a:hover {
-            color: #ff4500;
+        .hero span {
+            color: var(--primary-gold);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #e0e0e0;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        
+        .hero .btn-outline {
+             color: var(--primary-gold);
+             border-color: var(--primary-gold);
+        }
+        .hero .btn-outline:hover {
+            background-color: var(--primary-gold);
+            color: #000;
+        }
+
+        body:not(.dark-mode) .hero .btn-outline {
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+        body:not(.dark-mode) .hero .btn-outline:hover {
+            background-color: #ffffff;
+            color: #0a0a0a;
+            border-color: #ffffff;
+        }
+
+        /* =========================================
+           FEATURED IMAGES (Visual Strip)
+           ========================================= */
+        .visual-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 280px; /* Compact height */
+        }
+        
+        .visual-item {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            group: 1;
+        }
+        
+        .visual-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+        }
+        
+        .visual-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .visual-item:hover .visual-overlay {
+            opacity: 1;
+        }
+
+        .visual-overlay span {
+            color: #fff;
+            font-family: var(--font-head);
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        /* =========================================
+           MENU SECTION
+           ========================================= */
+        .menu-section {
+            padding: var(--section-padding);
+            background-color: var(--bg-body);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 4rem;
+        }
+
+        .menu-category h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-gold);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        body:not(.dark-mode) .menu-category h3 {
+            color: #0a0a0a;
+            border-bottom-color: var(--primary-gold);
+        }
+
+        .menu-item {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .menu-item-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--bg-surface-alt);
+        }
+
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .menu-item-content {
+            flex: 1;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.4rem;
+        }
+
+        .dish-name {
+            font-family: var(--font-head);
+            font-size: 1.3rem;
+            color: var(--text-main);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .dish-price {
+            font-size: 1.15rem;
+            color: var(--primary-gold);
+            font-family: var(--font-subhead);
+            font-weight: 600;
+        }
+        
+        body:not(.dark-mode) .dish-price {
+            color: #0a0a0a;
+        }
+
+        .dish-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.5;
+        }
+        
+        /* =========================================
+           ABOUT SECTION
+           ========================================= */
+        .about {
+            padding: var(--section-padding);
+            background-color: var(--bg-surface);
+        }
+
+        .about-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: 2px;
+            box-shadow: -15px -15px 0px rgba(212, 175, 55, 0.2); 
+            border: 1px solid var(--border-color);
+        }
+
+        .about-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-top: 1.5rem;
+            font-style: italic;
+        }
+
+        /* =========================================
+           GALLERY SECTION
+           ========================================= */
+        .gallery-section {
+            padding: var(--section-padding);
+            background-color: var(--bg-body);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* =========================================
+           RESERVATIONS & CONTACT
+           ========================================= */
+        .contact-section {
+            padding: var(--section-padding);
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16549766b?q=80&w=1920');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .reservation-box {
+            background-color: var(--bg-overlay);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid var(--primary-gold);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        body:not(.dark-mode) .reservation-box h2,
+        body:not(.dark-mode) .reservation-box label {
+            color: #0a0a0a;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            font-family: var(--font-subhead);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem;
+            background-color: var(--bg-surface-alt);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            transition: border-color 0.3s;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            resize: none; 
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            padding: 5rem 0 2rem;
+            border-top: 3px solid var(--primary-gold);
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: var(--font-subhead);
+            font-weight: 600;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #a0a0a0;
+            font-weight: 400;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+            padding-left: 5px;
+        }
+
+        footer .logo-fallback {
+            color: #ffffff !important;
+        }
+        footer .logo-fallback i {
+            color: var(--primary-gold);
         }
 
         .social-links {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
         }
 
         .social-links a {
-            color: #ffffff;
-            font-size: 1.5rem;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #ff4500;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #444444;
-        }
-
-        .footer-bottom p {
-            margin: 0.5rem 0;
-            color: #cccccc;
-        }
-
-        .footer-bottom a {
-            color: #ffff00; /* Yellow links */
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-bottom a:hover {
-            color: #ff4500;
-        }
-
-        .footer-logo {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .footer-logo img {
-            height: 60px;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .footer-links a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #ff4500;
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ffff00; /* Yellow background */
-            color: #1e1e1e; /* Dark text color */
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(255,255,255,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background-color 0.3s, transform 0.3s;
-            z-index: 1000;
-            display: none; /* Hidden by default */
+            border-radius: 50%;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            background: rgba(255,255,255,0.05);
         }
 
-        .back-to-top:hover {
-            background-color: #ff4500; /* Orange on hover */
-            transform: translateY(-5px);
+        .social-links a:hover {
+            background-color: var(--primary-gold);
+            color: #000;
+            border-color: var(--primary-gold);
+            transform: translateY(-3px);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none;
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: #666;
+            font-size: 0.85rem;
+            font-family: var(--font-subhead);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .alectronic-link {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .alectronic-link:hover {
+            color: var(--primary-gold);
+        }
+
+        /* =========================================
+           FLOATING BUTTONS
+           ========================================= */
+        .floating-btn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-gold);
+            color: #0a0a0a;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        #backToTop {
+            bottom: 20px;
+            right: 20px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #themeToggle {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* =========================================
+           RESPONSIVE (Mobile First Adjustments)
+           ========================================= */
+        @media (max-width: 1024px) {
+            :root {
+                --container-padding: 2rem;
+            }
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            .about-wrapper {
                 flex-direction: column;
-                gap: 1rem;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                background: linear-gradient(135deg, #1e90ff, #00008b);
-                padding: 1rem;
-                border-radius: 0.5rem;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            .footer-col:first-child {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --container-padding: 1.5rem;
+                --section-padding: 4rem 0; /* Reduced mobile padding */
             }
 
-            .navbar .nav-links.active {
-                display: flex;
+            html {
+                font-size: 15px;
             }
 
-            .navbar .hamburger {
-                display: flex;
+            .hamburger {
+                display: block;
             }
 
-            .footer-content {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: 0;
+                width: 100%;
+                height: 0;
+                background-color: var(--bg-body);
+                border-bottom: 1px solid var(--border-color);
                 flex-direction: column;
                 align-items: center;
+                gap: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
             }
 
-            .footer-section {
+            .nav-links.active {
+                height: auto;
+                min-height: 100vh; /* Full screen menu on mobile */
+                padding-top: 2rem;
+            }
+
+            .nav-links li {
                 width: 100%;
                 text-align: center;
+                margin: 0.5rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 0.5rem;
             }
 
-            .footer-logo img {
-                height: 80px;
+            .hero h1 {
+                font-size: 3rem;
             }
-
-            .footer-links {
+            
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .visual-strip {
+                grid-template-columns: 1fr; 
+                height: auto;
+            }
+            .visual-item {
+                height: 250px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Better mobile menu items */
+            .menu-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .menu-item-img {
+                margin-bottom: 1rem;
+            }
+            
+            .menu-header {
                 flex-direction: column;
                 gap: 0.5rem;
             }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+                margin-bottom: 3rem;
+            }
+            
+            .footer-col:first-child {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-bottom: 2rem;
+            }
 
-            .footer-links a {
-                display: block;
+            .copyright {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
             }
         }
     </style>
 </head>
-<body>
+<body class="">
+
+    <!-- Floating Buttons -->
+    <button id="themeToggle" class="floating-btn" aria-label="Toggle Dark Mode">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+    
+    <button id="backToTop" class="floating-btn" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Header -->
     <header>
-        <div class="navbar">
-            <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Pasta Place Logo">
-                Pasta Place
-            </a>
-            <div class="hamburger" onclick="toggleMenu()">
-                <div class="line"></div>
-                <div class="line"></div>
-                <div class="line"></div>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#menu">Menu</a>
-                <a href="index.html#reservation">Reservation</a>
-                <a href="index.html#contact">Contact</a>
-            </div>
+        <div class="container">
+            <nav>
+                <!-- Logo with Auto-Fallback -->
+                <a href="#" class="logo-container">
+                    <img src="portfolio-11.jpg" alt="Pasta Place Logo" class="logo-img" id="mainLogo" onerror="this.style.display='none'; document.getElementById('fallbackLogo').style.display='flex';">
+                    
+                    <div id="fallbackLogo" class="logo-fallback" style="display:none;">
+                        <i class="fa-solid fa-wheat-awn"></i> Pasta Place
+                    </div>
+                </a>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#menu" class="nav-link">Menu</a></li>
+                    <li><a href="#about" class="nav-link">Our Story</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="btn nav-cta">Book Table</a></li>
+                </ul>
+
+                <div class="hamburger" id="hamburger">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Video Background -->
-    <div class="hero">
-        <video autoplay muted loop id="heroVideo">
-            <source src="videos/hero-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div>
-            <h1>Fresh, Flavorful, and Fabulous Pasta</h1>
-            <p>Experience the Taste of Italy Right Here</p>
-        </div>
-    </div>
-
-    <div class="content" id="about">
-        <h2>About Us</h2>
-        <p>At Pasta Place, we bring authentic Italian flavors to your plate. Our family-owned restaurant has been delighting customers for over a decade. From traditional recipes to modern twists, our chefs ensure every bite is a masterpiece. We take pride in sourcing the freshest ingredients, including locally-grown produce and high-quality Italian imports, to create an unforgettable dining experience for everyone.</p>
-    </div>
-
-    <div class="content" id="menu">
-        <h2>Our Menu</h2>
-        <div class="menu">
-            <div class="menu-item">
-                <img src="images/Spaghetti Bolognese.jpg" alt="Spaghetti Bolognese">
-                <h3>Spaghetti Bolognese</h3>
-                <p>Rich and hearty tomato-based meat sauce served over al dente spaghetti.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Fettuccine Alfredo.jpg" alt="Fettuccine Alfredo">
-                <h3>Fettuccine Alfredo</h3>
-                <p>Creamy Alfredo sauce paired with perfectly cooked fettuccine.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Penne Arrabbiata.jpg" alt="Penne Arrabbiata">
-                <h3>Penne Arrabbiata</h3>
-                <p>Spicy tomato sauce with a kick, served over penne pasta.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Lasagna.jpg" alt="Lasagna">
-                <h3>Lasagna</h3>
-                <p>Layers of pasta, ricotta, mozzarella, and savory meat sauce baked to perfection.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Caprese Salad.jpg" alt="Caprese Salad">
-                <h3>Caprese Salad</h3>
-                <p>Fresh mozzarella, ripe tomatoes, and basil drizzled with balsamic glaze.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Tiramisu.jpg" alt="Tiramisu">
-                <h3>Tiramisu</h3>
-                <p>Classic Italian dessert with layers of coffee-soaked ladyfingers and mascarpone cream.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Margherita Pizza.jpg" alt="Margherita Pizza">
-                <h3>Margherita Pizza</h3>
-                <p>Wood-fired pizza topped with fresh mozzarella, basil, and tomato sauce.</p>
-            </div>
-            <div class="menu-item">
-                <img src="images/Garlic Bread.jpg" alt="Garlic Bread">
-                <h3>Garlic Bread</h3>
-                <p>Freshly baked bread topped with garlic butter and herbs.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="reservation" id="reservation">
-        <h2>Make a Reservation</h2>
-        <p>Reserve your table today and enjoy an unforgettable dining experience! Call us at (555) 123-4567 or click the button below.</p>
-        <button>Book Now</button>
-    </div>
-
-    <div class="content" id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Location:</strong> 123 Main Street, Foodie Town</p>
-        <p><strong>Phone:</strong> (555) 123-4567</p>
-        <p><strong>Email:</strong> info@pastaplace.com</p>
-        <p>Open daily: 11:00 AM - 10:00 PM</p>
-    </div>
-
-    <div class="map">
-        <h2>Find Us</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093645!2d-122.4200482846812!3d37.77928027975852!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808cbd1f1eb5%3A0x7f8f870bcbd9e1d4!2s123%20Main%20St%2C%20San%20Francisco%2C%20CA%2094105%2C%20USA!5e0!3m2!1sen!2sus!4v1618242275155!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-logo">
-                <img src="images/logo.png" alt="Pasta Place Logo">
-                <h3>Pasta Place</h3>
-            </div>
-            <div class="footer-section">
-                <h3>Site Map</h3>
-                <ul>
-                    <li><a href="index.html#about">About Us</a></li>
-                    <li><a href="index.html#menu">Our Menu</a></li>
-                    <li><a href="index.html#reservation">Reservation</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Contact Info</h3>
-                <p><strong>Address:</strong> 123 Main Street, Foodie Town</p>
-                <p><strong>Phone:</strong> (555) 123-4567</p>
-                <p><strong>Email:</strong> info@pastaplace.com</p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-links">
-                    <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Authentic <span>Italian</span> Soul</h1>
+                    <p>Experience the timeless tradition of handmade pasta and curated wines. <br>Where every meal is a celebration of life.</p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn">View Menu</a>
+                        <a href="#contact" class="btn btn-outline">Reservations</a>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- Visual Strip -->
+        <div class="visual-strip">
+            <div class="visual-item">
+                <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=600&auto=format&fit=crop" alt="Fresh Pasta">
+                <div class="visual-overlay"><span>Fresh Pasta</span></div>
+            </div>
+            <div class="visual-item">
+                <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?q=80&w=600&auto=format&fit=crop" alt="Fine Wine">
+                <div class="visual-overlay"><span>Fine Wine</span></div>
+            </div>
+            <div class="visual-item">
+                <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=600&auto=format&fit=crop" alt="Antipasti Bruschetta">
+                <div class="visual-overlay"><span>Antipasti</span></div>
+            </div>
+            <div class="visual-item">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=600&auto=format&fit=crop" alt="Tiramisu">
+                <div class="visual-overlay"><span>Dolci</span></div>
+            </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Pasta Place. All rights reserved.</p>
-            <p>Designed by <a href="https://alectronic-solutions.github.io/" target="_blank">Alectronic Solutions</a></p>
-            <div class="footer-links">
-                <a href="terms.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+
+        <!-- Menu Section -->
+        <section class="menu-section" id="menu">
+            <div class="container">
+                <h2 class="section-title">Curated Menu</h2>
+                <p class="section-subtitle">Crafted with passion, using only the finest ingredients imported directly from Italy.</p>
+                
+                <div class="menu-grid">
+                    
+                    <!-- Column 1 -->
+                    <div class="menu-column">
+                        <!-- Category: Antipasti -->
+                        <div class="menu-category">
+                            <h3>Antipasti</h3>
+                            
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1626844131082-256783844137?q=80&w=200" alt="Bruschetta">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Bruschetta al Pomodoro</span>
+                                        <span class="dish-price">$14</span>
+                                    </div>
+                                    <div class="dish-desc">Grilled artisan bread, vine-ripened tomatoes, fresh basil, garlic, extra virgin olive oil.</div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1544078751-58fee2d8a03b?q=80&w=200" alt="Carpaccio">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Carpaccio di Manzo</span>
+                                        <span class="dish-price">$22</span>
+                                    </div>
+                                    <div class="dish-desc">Thinly sliced raw beef tenderloin, arugula, shaved parmesan, capers, truffle oil.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category: Primi (Pasta) -->
+                        <div class="menu-category" style="margin-top: 3rem;">
+                            <h3>Primi Piatti</h3>
+                            
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=200" alt="Pasta">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Tagliatelle al Tartufo</span>
+                                        <span class="dish-price">$32</span>
+                                    </div>
+                                    <div class="dish-desc">Fresh handmade egg pasta, black truffle cream sauce, wild mushrooms, parmesan.</div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?q=80&w=200" alt="Carbonara">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Spaghetti alla Carbonara</span>
+                                        <span class="dish-price">$26</span>
+                                    </div>
+                                    <div class="dish-desc">The authentic way: Guanciale, egg yolk, Pecorino Romano, black pepper. No cream.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="menu-column">
+                        <!-- Category: Secondi (Mains) -->
+                        <div class="menu-category">
+                            <h3>Secondi</h3>
+                            
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=200" alt="Steak">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Filetto al Pepe Verde</span>
+                                        <span class="dish-price">$48</span>
+                                    </div>
+                                    <div class="dish-desc">8oz Prime beef tenderloin, green peppercorn brandy sauce, roasted rosemary potatoes.</div>
+                                </div>
+                            </div>
+
+                             <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?q=80&w=200" alt="Branzino Fish">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Branzino al Sale</span>
+                                        <span class="dish-price">$42</span>
+                                    </div>
+                                    <div class="dish-desc">Mediterranean sea bass baked in salt crust, seasonal grilled vegetables, lemon olive oil.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Category: Dolci (Dessert) -->
+                        <div class="menu-category" style="margin-top: 3rem;">
+                            <h3>Dolci</h3>
+                            
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=200" alt="Tiramisu">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Tiramisu Classico</span>
+                                        <span class="dish-price">$16</span>
+                                    </div>
+                                    <div class="dish-desc">Ladyfingers dipped in espresso, mascarpone cream, cocoa powder.</div>
+                                </div>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-item-img">
+                                    <img src="https://images.unsplash.com/photo-1517438322307-e67111335449?q=80&w=200" alt="Cannoli">
+                                </div>
+                                <div class="menu-item-content">
+                                    <div class="menu-header">
+                                        <span class="dish-name">Cannoli Siciliani</span>
+                                        <span class="dish-price">$14</span>
+                                    </div>
+                                    <div class="dish-desc">Crispy pastry shells, sweet ricotta filling, pistachios, candied orange.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-wrapper">
+                    <div class="about-text">
+                        <span style="color:var(--primary-gold); text-transform:uppercase; letter-spacing:2px; font-weight:600;">Our Story</span>
+                        <h2>A Tradition of Excellence</h2>
+                        <p>
+                            Founded in 1995, Pasta Place began with a simple mission: to bring the authentic flavors of Nonna's kitchen to the modern world. We believe that food is more than sustenance; it is a conversation, a memory, and an art form.
+                        </p>
+                        <p>
+                            Head Chef Antonio Rossi brings 30 years of culinary expertise from Bologna. Every dish is prepared with respect for tradition and a flair for innovation.
+                        </p>
+                        
+                        <div class="signature">Antonio Rossi</div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?q=80&w=800&auto=format&fit=crop" alt="Chef Plating Food">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="container">
+                <h2 class="section-title">Atmosphere</h2>
+                <p class="section-subtitle">A glimpse into our world.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=600" alt="Restaurant Interior">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=600" alt="Steak Dish">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?q=80&w=600" alt="Wine Pouring">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1555244162-803834f70033?q=80&w=600" alt="Bar Area">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reservation / Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="container">
+                <div class="reservation-box">
+                    <h2 class="section-title" style="font-size: 2.5rem;">Book A Table</h2>
+                    <p class="section-subtitle" style="margin-bottom: 2rem;">Reserve your spot for an unforgettable evening.</p>
+                    
+                    <form onsubmit="event.preventDefault(); alert('Thank you for your request. We will confirm your table shortly.');">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Guests</label>
+                                <select class="form-control">
+                                    <option>2 People</option>
+                                    <option>3 People</option>
+                                    <option>4 People</option>
+                                    <option>5+ People</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Special Requests</label>
+                            <textarea class="form-control" rows="3" placeholder="Allergies, anniversaries, etc."></textarea>
+                        </div>
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button type="submit" class="btn">Confirm Reservation</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Branding Column -->
+                <div class="footer-col">
+                    <a href="#" class="logo-container" style="margin-bottom: 1.5rem; display:inline-flex;">
+                        <!-- Updated fallback logo style to force white color in footer -->
+                        <img src="portfolio-11.jpg" alt="Pasta Place Logo" class="logo-img" style="height:50px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display:none; font-size:1.5rem;">
+                            <i class="fa-solid fa-wheat-awn"></i> Pasta Place
+                        </div>
+                    </a>
+
+                    <p style="color: #b0b0b0; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                        Bringing the authentic taste of Italy to your table since 1995. Fresh ingredients, handmade pasta, and a passion for excellence.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links Column -->
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#menu">Our Menu</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Reservations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li style="color:#b0b0b0"><i class="fa-solid fa-location-dot" style="color:var(--primary-gold); margin-right:10px;"></i> 123 Culinary Ave,<br>Food City, FC 90210</li>
+                        <li><a href="tel:5551234567"><i class="fa-solid fa-phone" style="color:var(--primary-gold); margin-right:10px;"></i> (555) 123-4567</a></li>
+                        <li><a href="mailto:dine@pastaplace.com"><i class="fa-solid fa-envelope" style="color:var(--primary-gold); margin-right:10px;"></i> dine@pastaplace.com</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Hours Column -->
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul>
+                        <li style="color: #b0b0b0; display:flex; justify-content:space-between;"><span>Mon-Thu:</span> <span>5pm - 10pm</span></li>
+                        <li style="color: #b0b0b0; display:flex; justify-content:space-between;"><span>Fri-Sat:</span> <span>5pm - 11pm</span></li>
+                        <li style="color: #b0b0b0; display:flex; justify-content:space-between;"><span>Sun:</span> <span>4pm - 9pm</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Copyright / Bottom Bar -->
+            <div class="copyright">
+                <span>&copy; 2025 Alectronic Solutions. All rights reserved.</span>
+                <a href="https://alectronic-solutions.github.io/" target="_blank" class="alectronic-link">
+                    Made with <i class="fa-solid fa-heart" style="color:var(--primary-gold); font-size:0.8rem;"></i> by Alectronic Solutions
+                </a>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button class="back-to-top" onclick="scrollToTop()" aria-label="Back to Top">
-        ↑
-    </button>
-
+    <!-- JavaScript -->
     <script>
-        function toggleMenu() {
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
             const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+            const links = document.querySelectorAll('.nav-link');
+            const backToTopBtn = document.getElementById('backToTop');
+            const themeToggleBtn = document.getElementById('themeToggle');
+            const body = document.body;
 
-        // Back to Top Button Functionality
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth' // Smooth scroll
+            // Toggle Mobile Menu
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                
+                const icon = hamburger.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
             });
-        }
 
-        // Show/hide the button based on scroll position
-        window.onscroll = function() {
-            const backToTopButton = document.querySelector('.back-to-top');
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                backToTopButton.style.display = 'flex';
-            } else {
-                backToTopButton.style.display = 'none';
+            // Close mobile menu when a link is clicked
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Navbar background change on scroll
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                const isDarkMode = body.classList.contains('dark-mode');
+                
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = isDarkMode ? 'rgba(10, 10, 10, 1)' : 'rgba(255, 255, 255, 1)';
+                    header.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.backgroundColor = isDarkMode ? 'rgba(10, 10, 10, 0.95)' : 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+
+                // Back to Top Button Visibility
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            // Back to Top Functionality
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Theme Toggle Functionality
+            // Check for saved theme in localStorage
+            if (localStorage.getItem('theme') === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
             }
-        };
+
+            themeToggleBtn.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                
+                // Update Icon
+                themeToggleBtn.innerHTML = isDark ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
+                
+                // Update Storage
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                
+                // Trigger scroll event to update navbar color immediately
+                window.dispatchEvent(new Event('scroll'));
+            });
+        });
     </script>
 </body>
 </html>
