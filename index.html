@@ -10,7 +10,7 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200">
     
     <!-- Favicon -->
-    <link rel="icon" href="portfolio-11.png" type="image/png">
+    <link rel="icon" href="portfolio-11.jpg" type="image/jpeg">
     
     <title>Pasta Place | Authentic Italian</title>
 
@@ -53,7 +53,7 @@
             /* Spacing - Optimized */
             --container-padding: 2rem;
             --max-width: 1280px;
-            --nav-height: 70px;
+            --nav-height: 80px; 
             --section-padding: 7rem 0;
         }
 
@@ -234,6 +234,7 @@
             justify-content: space-between;
             align-items: center;
             width: 100%;
+            gap: 2rem; /* Added gap to ensure Title and Menu stay separated comfortably */
         }
 
         .logo-container {
@@ -245,7 +246,7 @@
         }
 
         .logo-img {
-            height: 48px;
+            height: 52px;
             width: auto;
             display: block;
         }
@@ -272,7 +273,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem; 
             align-items: center;
         }
 
@@ -281,7 +282,7 @@
             font-weight: 500;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             position: relative;
             color: var(--text-main);
         }
@@ -387,7 +388,7 @@
         }
 
         /* =========================================
-           FEATURED IMAGES (Visual Strip)
+           FEATURED IMAGES
            ========================================= */
         .visual-strip {
             display: grid;
@@ -679,27 +680,28 @@
         }
 
         /* =========================================
-           FOOTER (Robust & Overlap-Proof)
+           FOOTER (Updated Layout)
            ========================================= */
         footer {
             background-color: #111111;
             color: #e0e0e0;
-            padding: 6rem 0 3rem;
+            padding: 4rem 0 3rem; /* Reduced top padding to move content up */
             border-top: 3px solid var(--primary-gold);
             font-size: 0.95rem;
         }
 
         .footer-grid {
-            /* Auto-fit grid creates robust wrapping. No overlaps. */
+            /* Robust grid: 4 columns, auto-wrap */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 4rem;
-            margin-bottom: 5rem;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: start; /* Ensure everything sits at the top */
         }
 
         .footer-col h4 {
             color: var(--primary-gold);
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem; /* Reduced bottom margin to move contact up */
             font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -708,7 +710,7 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-col ul li a {
@@ -723,7 +725,20 @@
             padding-left: 5px;
         }
 
-        /* Force footer branding color overrides */
+        /* Branding Column Specifics */
+        .footer-col .logo-container {
+            margin-bottom: 1rem;
+            display: inline-flex;
+        }
+        
+        .footer-col p {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem; /* Reduced to move icons up */
+            max-width: 90%;
+        }
+
         footer .logo-fallback {
             color: #ffffff !important;
         }
@@ -734,12 +749,12 @@
         .social-links {
             display: flex;
             gap: 1rem;
-            margin-top: 2rem;
+            margin-top: 1rem; /* Reduced margin-top to move icons up */
         }
 
         .social-links a {
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border: 1px solid rgba(255,255,255,0.15);
             display: flex;
             align-items: center;
@@ -758,17 +773,16 @@
             transform: translateY(-3px);
         }
         
-        /* Opening Hours List styling to prevent overlap */
+        /* Opening Hours List styling */
         .hours-list li {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
             padding-bottom: 0.8rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         
-        /* Ensure time stays on one line if possible, or wraps cleanly */
         .hours-list span:last-child {
             color: #fff;
             font-weight: 500;
@@ -778,7 +792,7 @@
 
         .copyright {
             text-align: center;
-            padding-top: 3rem;
+            padding-top: 2.5rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #777;
             font-size: 0.85rem;
@@ -973,6 +987,15 @@
             
             .footer-col h4 {
                 justify-content: center;
+            }
+            
+            .footer-col .logo-container {
+                justify-content: center;
+            }
+            
+            .footer-col p {
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .social-links {
@@ -1307,15 +1330,15 @@
             <div class="footer-grid">
                 <!-- Branding Column -->
                 <div class="footer-col">
-                    <a href="#" class="logo-container" style="margin-bottom: 1.5rem; display:inline-flex;">
-                        <!-- Updated fallback logo style to force white color in footer -->
-                        <img src="portfolio-11.jpg" alt="Pasta Place Logo" class="logo-img" style="height:50px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <div class="logo-fallback" style="display:none; font-size:1.5rem;">
+                    <a href="#" class="logo-container">
+                        <img src="portfolio-11.jpg" alt="Pasta Place Logo" class="logo-img" id="mainLogo" onerror="this.style.display='none'; document.getElementById('fallbackLogo').style.display='flex';">
+                        
+                        <div id="fallbackLogo" class="logo-fallback" style="display:none;">
                             <i class="fa-solid fa-wheat-awn"></i> Pasta Place
                         </div>
                     </a>
 
-                    <p style="color: #b0b0b0; font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                    <p>
                         Bringing the authentic taste of Italy to your table since 1995. Fresh ingredients, handmade pasta, and a passion for excellence.
                     </p>
                     
@@ -1330,7 +1353,7 @@
                 <div class="footer-col">
                     <h4>Explore</h4>
                     <ul>
-                        <li><a href="#hero">Home</a></li>
+                        <!-- Home Removed -->
                         <li><a href="#menu">Our Menu</a></li>
                         <li><a href="#about">Our Story</a></li>
                         <li><a href="#gallery">Gallery</a></li>
