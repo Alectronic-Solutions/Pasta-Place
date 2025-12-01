@@ -10,7 +10,7 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1200">
     
     <!-- Favicon -->
-    <link rel="icon" href="portfolio-11.png" type="image/png">
+    <link rel="icon" href="portfolio-11.jpg" type="image/jpeg">
     
     <title>Pasta Place | Authentic Italian</title>
 
@@ -52,9 +52,9 @@
             
             /* Spacing - Optimized */
             --container-padding: 2rem;
-            --max-width: 1280px; /* Slightly wider for modern feel */
+            --max-width: 1280px;
             --nav-height: 70px;
-            --section-padding: 7rem 0; /* Generous breathing room */
+            --section-padding: 7rem 0;
         }
 
         /* --- Dark Mode Overrides --- */
@@ -367,7 +367,6 @@
             gap: 1.5rem;
         }
         
-        /* Hero buttons specific styling for contrast */
         .hero .btn-outline {
              color: var(--primary-gold);
              border-color: var(--primary-gold);
@@ -455,7 +454,7 @@
             margin-bottom: 2.5rem;
             color: var(--primary-gold);
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
+            padding-bottom: 1.2rem;
             display: inline-block;
         }
         
@@ -666,7 +665,7 @@
             font-family: var(--font-body);
             transition: border-color 0.3s;
             font-size: 1rem;
-            border-radius: 0; /* Sharp edges for modern look */
+            border-radius: 0;
         }
         
         textarea.form-control {
@@ -680,22 +679,22 @@
         }
 
         /* =========================================
-           FOOTER
+           FOOTER (Robust & Overlap-Proof)
            ========================================= */
         footer {
-            background-color: #111111; /* Almost black */
+            background-color: #111111;
             color: #e0e0e0;
-            padding: 5rem 0 2rem;
+            padding: 6rem 0 3rem;
             border-top: 3px solid var(--primary-gold);
             font-size: 0.95rem;
         }
 
         .footer-grid {
+            /* Auto-fit grid creates robust wrapping. No overlaps. */
             display: grid;
-            /* 2fr for brand, 1fr for links, 1fr for contact, 1.2fr for hours */
-            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 4rem;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
         }
 
         .footer-col h4 {
@@ -724,6 +723,7 @@
             padding-left: 5px;
         }
 
+        /* Force footer branding color overrides */
         footer .logo-fallback {
             color: #ffffff !important;
         }
@@ -758,22 +758,27 @@
             transform: translateY(-3px);
         }
         
+        /* Opening Hours List styling to prevent overlap */
         .hours-list li {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.8rem;
             margin-bottom: 1rem;
         }
         
+        /* Ensure time stays on one line if possible, or wraps cleanly */
         .hours-list span:last-child {
             color: #fff;
             font-weight: 500;
+            white-space: nowrap; 
+            margin-left: 1rem;
         }
 
         .copyright {
             text-align: center;
-            padding-top: 2.5rem;
+            padding-top: 3rem;
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #777;
             font-size: 0.85rem;
@@ -782,6 +787,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            gap: 1.5rem;
         }
 
         .alectronic-link {
@@ -854,21 +860,12 @@
             .about-wrapper {
                 flex-direction: column;
             }
-            
-            /* Tablet Footer: 2x2 grid */
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 3rem;
-            }
-            .footer-col:first-child {
-                grid-column: span 2;
-            }
         }
 
         @media (max-width: 768px) {
             :root {
                 --container-padding: 1.5rem;
-                --section-padding: 5rem 0; /* Comfortable mobile padding */
+                --section-padding: 5rem 0; 
             }
 
             html {
@@ -935,7 +932,6 @@
                 height: 250px;
             }
             
-            /* Better mobile menu items */
             .menu-item {
                 flex-direction: column;
                 align-items: center;
@@ -963,7 +959,7 @@
                 padding: 2rem 1.5rem;
             }
             
-            /* Footer Mobile Stack */
+            /* Footer Mobile Stack Optimization */
             .footer-grid {
                 display: flex;
                 flex-direction: column;
@@ -971,13 +967,21 @@
                 margin-bottom: 3rem;
             }
             
-            .footer-col:first-child {
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-                padding-bottom: 2rem;
+            .footer-col {
                 text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+            }
+            
+            .footer-col h4 {
+                justify-content: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .hours-list li {
+                justify-content: space-between; /* Keep hours justified */
+                text-align: left;
             }
 
             .copyright {
@@ -1013,7 +1017,7 @@
                 </a>
                 
                 <ul class="nav-links" id="navLinks">
-                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <!-- Removed Home Link -->
                     <li><a href="#menu" class="nav-link">Menu</a></li>
                     <li><a href="#about" class="nav-link">Our Story</a></li>
                     <li><a href="#gallery" class="nav-link">Gallery</a></li>
